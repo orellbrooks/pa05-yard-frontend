@@ -1,18 +1,21 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
-import './styles/custom.css'; 
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import YardListPage from './pages/YardListPage'; // 1. Add this import
+import './styles/custom.css';
 
 function App() {
   return (
-    <div>
+    <Router>
       <NavBar />
-      <div className="container mt-5">
-        <div className="hero-section text-center">
-          <h1>Yard API Management</h1>
-          <p>Managing FAMU Yard Records</p>
-        </div>
-      </div>
-    </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/yards" element={<YardListPage />} /> {/* 2. Add this route */}
+      </Routes>
+    </Router>
   );
 }
 
